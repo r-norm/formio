@@ -1,0 +1,18 @@
+
+version: 0.0
+os: linux
+files:
+   - source: /www
+     destination: /var/www/
+permissions:
+   - object: /var/www/
+     pattern: "**"
+     owner: apache
+     group: apache
+     mode: 755
+     type:
+       - file
+hooks:
+   AfterInstall:
+    - location: scripts/reloadhttpd.sh
+runas: root
